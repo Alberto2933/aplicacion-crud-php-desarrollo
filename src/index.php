@@ -5,7 +5,7 @@ DB_NAME: Nombre de la BD
 DB_USER: Usuario de la BD
 DB_PASSWORD: Contraseña del usuario de la BD
 */
-include_once("config.php");
+include_once "config.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +13,12 @@ include_once("config.php");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Electroshop S.L.</title>
+	<title>LOL</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>LOL</h1>
 	</header>
 
 	<main>
@@ -26,15 +26,16 @@ include_once("config.php");
 		<li><a href="index.php">Inicio</a></li>
 		<li><a href="add.html">Alta</a></li>
 	</ul>
-	<h2>Empleados/as</h2>
+	<h2>Jugador/a</h2>
 	<table border="1">
 	<thead>
 		<tr>
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>Edad</th>
-			<th>Puesto</th>
-			<th>Acciones</th>
+			<th>equipo</th>
+			<th>dinero</th>
+			<th>anios_activo</th>
 		</tr>
 	</thead>
 	<tbdody>
@@ -44,7 +45,7 @@ include_once("config.php");
 Cada fila y cada columna de la tabla se corresponde con un registro y campo de la tabla EMPLEADOS.
 */
 
-$resultado = $mysqli->query("SELECT * FROM empleados ORDER BY apellido, nombre");
+$resultado = $mysqli->query("SELECT * FROM JugadoresLOL ORDER BY apellido, nombre");
 
 //Cierra la conexión de la BD
 $mysqli->close();
@@ -90,13 +91,15 @@ A medida que avanza se va consturyendo cada fila de la tabla HTML con todos los 
 		echo "<td>".$fila['nombre']."</td>\n";
 		echo "<td>".$fila['apellido']."</td>\n";
 		echo "<td>".$fila['edad']."</td>\n";
-		echo "<td>".$fila['puesto']."</td>\n";
+		echo "<td>".$fila['equipo']."</td>\n";
+		echo "<td>".$fila['dinero']."</td>\n";
+		echo "<td>".$fila['anios_activo']."</td>\n";
 		echo "<td>";
 /* En la última columna se añade dos enlaces para editar y modificar el registro correspondiente. 
 Los datos se pueden enviar entre distintas páginas siguiendo distintos métodos. En este caso el id del registro a editar/eliminar se pasa a través de la URL. 
 Este forma de pasar el dato se conoce como: método GET*/
-		echo "<a href=\"edit.php?idempleado=$fila[id]\">Edición</a>\n";
-		echo "<a href=\"delete.php?idempleado=$fila[id]\" onClick=\"return confirm('¿Está segur@ que desea eliminar el empleado/a?')\" >Baja</a></td>\n";
+		echo "<a href=\"edit.php?jugador_id=$fila[jugador_id]\">Edición</a>\n";
+		echo "<a href=\"delete.php?jugador_id=$fila[jugador_id]\" onClick=\"return confirm('¿Está segur@ que desea eliminar el jugador/a?')\" >Baja</a></td>\n";
 		echo "</td>";
 		echo "</tr>\n";
 	}//fin mientras
@@ -106,7 +109,7 @@ Este forma de pasar el dato se conoce como: método GET*/
 	</table>
 	</main>
 	<footer>
-    	Created by the IES Miguel Herrero team &copy; 2025
+    	Created by ALBERTO CAMACHO &copy; 2025
   	</footer>
 </div>
 </body>

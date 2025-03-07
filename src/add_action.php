@@ -8,12 +8,12 @@ include_once("config.php");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Alta empleado/a</title>
+	<title>LOL</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>LOL</h1>
 	</header>
 	<main>
 
@@ -37,7 +37,9 @@ PHP proporciona el array asociativo $_POST para acceder a la información enviad
 	$name = $mysqli->real_escape_string($_POST['name']);
 	$surname = $mysqli->real_escape_string($_POST['surname']);
 	$age = $mysqli->real_escape_string($_POST['age']);
-	$job = $mysqli->real_escape_string($_POST['job']);
+	$team = $mysqli->real_escape_string($_POST['team']);
+	$money = $mysqli->real_escape_string($_POST['dinero']);
+	$year_active = $mysqli->real_escape_string($_POST['anios_activo']);
 
 /*Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
 Esta función es usada para crear una cadena SQL legal que se puede usar en una sentencia SQL. 
@@ -47,7 +49,7 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 */
 
 //Se comprueba si existen campos del formulario vacíos
-	if(empty($name) || empty($surname) || empty($age) || empty($job) ) 
+	if(empty($name) || empty($surname) || empty($age) || empty($team) || empty($money) || empty($year_active) ) 
 	{
 		if(empty($name)) {
 			echo "<div>Campo nombre vacío.</div>";
@@ -61,9 +63,16 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 			echo "<div>Campo edad vacío.</div>";
 		}
 
-		if(empty($job)) {
-			echo "<div>Campo puesto vacío.</div>";
+		if(empty($team)) {
+			echo "<div>Campo equipo.</div>";
 		}
+		if(empty($money)) {
+			echo "<div>Campo dinero vacio.</div>";
+		}
+		if(empty($year_active)) {
+			echo "<div>Campo anios_activo vacio.</div>";
+		}
+		
 //Enlace a la página anterior
 		//Se cierra la conexión
 		$mysqli->close();
@@ -72,7 +81,7 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 	else //Sino existen campos de formulario vacíos se procede al alta del nuevo registro
 	{
 //Se ejecuta una sentencia SQL. Inserta (da de alta) el nuevo registro: insert.
-		$result = $mysqli->query("INSERT INTO empleados (nombre, apellido, edad, puesto) VALUES ('$name', '$surname', '$age', '$job')");	
+		$result = $mysqli->query("INSERT INTO JugadoresLOL (nombre, apellido, edad, equipo, dinero, anios_activo) VALUES ('$name', '$surname', '$age', '$team','$money','$year_active')");	
 		//Se cierra la conexión
 		$mysqli->close();
 		echo "<div>Registro añadido correctamente...</div>";
